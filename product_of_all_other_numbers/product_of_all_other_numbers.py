@@ -4,9 +4,24 @@ Returns: a List of integers
 '''
 def product_of_all_other_numbers(arr):
     # Your code here
+    left_products = [None] * len(arr)
+    right_products = [None] * len(arr)
+    products = [None] * len(arr)
 
-    pass
+    left_products[0] = 1
+    right_products[len(arr)-1] = 1
+    
+    for i in range(1, len(arr)):
+        left_products[i] = left_products[i-1] * arr[i-1]
+        if i == len(arr)-1:
+            products[i] = left_products[i]
 
+    for i in range(len(arr)-2, -1, -1):
+
+        right_products[i] = right_products[i+1] * arr[i+1]
+        products[i] = left_products[i] * right_products[i]
+
+    return products
 
 if __name__ == '__main__':
     # Use the main function to test your implementation
