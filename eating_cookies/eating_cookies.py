@@ -2,11 +2,15 @@
 Input: an integer
 Returns: an integer
 '''
+
 def eating_cookies(n):
     # Your code here
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
 
-    pass
-
+    
 if __name__ == "__main__":
     # Use the main function here to test out your implementation
     num_cookies = 5

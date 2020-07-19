@@ -2,27 +2,32 @@
 Input: a List of integers as well as an integer `k` representing the size of the sliding window
 Returns: a List of integers
 '''
-def sliding_window_max(nums, k):
-    # Your code here
-    max_per_win = []
-    for i in range(len(nums) - (k - 1)):
-        max_win_num = nums[i]
-
-        if k > 1: 
-            for l in range(i + 1, i + k):
-                if max_win_num < nums[l]:
-                    max_win_num = nums[l]
-        else:
-            print('k not greater than 1')
+def sliding_window_max(arr, k):
+    maximum = []
+    max_tracker = [None, None]
+    for i in range(len(arr) - k + 1):
+        if max_tracker[0] is None:
             for l in range(i, i + k):
-                if max_win_num < nums[l]:
-                    max_win_num = nums[l]
+                if max_tracker[0] is None:
+                    max_tracker[0], max_tracker[1] = arr[l], l
+                elif arr[l] > max_tracker[0]:
+                    max_tracker[0], max_tracker[1] = arr[l], l
 
-        max_per_win.append(max_win_num)
+        elif arr[i + (k-1)] > max_tracker[0]:
+            max_tracker[0], max_tracker[1] = arr[i + (k-1)], i + (k-1)
 
-    return max_per_win
+        elif i > max_tracker[1]:
+            max_tracker[0], max_tracker[1] = None, None
+            for l in range(i, i + k):
 
+                if max_tracker[0] is None:
+                    max_tracker[0], max_tracker[1] = arr[l], l
+                elif arr[l] > max_tracker[0]:
+                    max_tracker[0], max_tracker[1] = arr[l], l
+            
+        maximum.append(max_tracker[0])
 
+    return maximum
 
 if __name__ == '__main__':
     # Use the main function here to test out your implementation 
