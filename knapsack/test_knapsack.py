@@ -6,8 +6,10 @@ from knapsack import knapsack_solver
 Item = namedtuple('Item', ['index', 'size', 'value'])
 
 class Test(unittest.TestCase):
+# setUp prefaces testInits
   def setUp_small(self):
-    file_contents = open('data/small1.txt', 'r')
+    file_contents = open('./knapsack/data/small1.txt', 'r')
+# init self.small_1_items
     self.small_1_items = []
     
     for line in file_contents.readlines():
@@ -16,7 +18,8 @@ class Test(unittest.TestCase):
 
     file_contents.close()
 
-    file_contents = open('data/small2.txt', 'r')
+    file_contents = open('./knapsack/data/small2.txt', 'r')
+# init self.small_2_items
     self.small_2_items = []
     
     for line in file_contents.readlines():
@@ -25,7 +28,8 @@ class Test(unittest.TestCase):
 
     file_contents.close()
 
-    file_contents = open('data/small3.txt', 'r')
+    file_contents = open('./knapsack/data/small3.txt', 'r')
+# init self.small_3_items
     self.small_3_items = []
     
     for line in file_contents.readlines():
@@ -34,13 +38,15 @@ class Test(unittest.TestCase):
 
     file_contents.close()
 
+# cleanUp prefaces test clean-up logic to not leave data behind
   def cleanUp_small(self):
     del self.small_1_items
     del self.small_2_items
     del self.small_3_items
 
   def setUp_medium(self):
-    file_contents = open('data/medium1.txt', 'r')
+    file_contents = open('./knapsack/data/medium1.txt', 'r')
+# init self.medium_1_items
     self.medium_1_items = []
     
     for line in file_contents.readlines():
@@ -49,7 +55,8 @@ class Test(unittest.TestCase):
 
     file_contents.close()
 
-    file_contents = open('data/medium2.txt', 'r')
+    file_contents = open('./knapsack/data/medium2.txt', 'r')
+# init self.medium_2_items
     self.medium_2_items = []
     
     for line in file_contents.readlines():
@@ -58,7 +65,8 @@ class Test(unittest.TestCase):
 
     file_contents.close()
 
-    file_contents = open('data/medium3.txt', 'r')
+    file_contents = open('./knapsack/data/medium3.txt', 'r')
+# init self.medium_3_items
     self.medium_3_items = []
     
     for line in file_contents.readlines():
@@ -73,7 +81,8 @@ class Test(unittest.TestCase):
     del self.medium_3_items
 
   def setUp_large(self):
-    file_contents = open('data/large1.txt', 'r')
+    file_contents = open('./knapsack/data/large1.txt', 'r')
+# init self.large_1_items
     self.large_1_items = []
     
     for line in file_contents.readlines():
